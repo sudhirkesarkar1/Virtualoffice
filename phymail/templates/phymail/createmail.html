@@ -1,0 +1,24 @@
+{% extends 'basemain.html' %}
+{% load crispy_forms_tags %}
+{% block title %} {{ title}}{% endblock %}
+
+{% block content %}
+
+
+<div class="row">
+	{% include 'phymail/mailside.html'%}
+
+
+	<div class="col-md-9 col-sm-6">
+		{% if not form %}
+			<h2>{{data}}</h2>
+		{% else%}
+			<form method ='POST' action ='' enctype='multipart/form-data'>{%csrf_token%}
+				{{form|crispy}}
+				<input class='btn btn-primary' type='submit' value='submit' />
+			</form>
+		{% endif %}
+	</div>
+		
+</div>
+{% endblock %}

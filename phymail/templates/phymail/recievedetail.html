@@ -1,0 +1,22 @@
+{% extends 'basemain.html' %}
+{% block title %} Mymail|Details {% endblock %}
+
+{% block content %}
+<div class="row">
+		{% include 'phymail/mailside.html'%}
+	
+	<div class="col-md-9 col-sm-6" style='background-color:red;'>
+		<h2>
+		From   : {{recieve.FROM}}
+		</h2>
+		<br>
+		Sender's address : {{recieve.FROM_address}}
+		<br>
+		recieved Date : {{recieve.timestamp}}
+		<br>
+		<a href ="{{recieve.Your_Message.url}}" class="btn btn-success btn-xs" role="button">your massage  </a>
+	</div>
+</div>
+
+
+{% endblock %}

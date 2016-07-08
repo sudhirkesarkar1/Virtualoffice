@@ -1,0 +1,17 @@
+{% extends 'basemain.html' %}
+{% load crispy_forms_tags %}
+{% block title%}Update Meet{% endblock%}
+
+{% block content%}
+<div class="row">
+	{% include 'meetings/meetside.html'%}
+	
+	<div class="col-md-9 col-sm-6">
+		<form method ='POST'>{%csrf_token%}
+			{{form|crispy}}
+			<input class='btn btn-primary' type='submit' value='update' />
+		</form>
+	</div>
+</div>
+
+{%endblock%}

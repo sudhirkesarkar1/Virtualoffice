@@ -1,0 +1,23 @@
+{% extends 'basemain.html' %}
+{% block title %} Mymail|Details {% endblock %}
+
+{% block content %}
+<div class="row">
+{% include 'tasks/taskside.html'%}
+	<div class="col-md-9 col-sm-6" style='background-color:red;'>
+		<h2>
+		Topic : {{send.Task_Topic}}
+		</h2>
+		<br>
+		Task Details : {{send.Task_Details}} 
+		<br>
+		Task Date : {{send.End_Date}}
+		<br>
+		Task Priority : {{send.Task_Priority}}
+		<br>
+		<a href ="{%url 'tasks:Updatetask' send.id %}" class="btn btn-success btn-xs" role="button">Update Task  </a>
+		<a href ="{%url 'tasks:Deletetask' send.id %}" class="btn btn-success btn-xs" role="button">Delete Task  </a>
+	</div>
+</div>
+{% endblock %}
+

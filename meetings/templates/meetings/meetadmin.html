@@ -1,0 +1,65 @@
+{% extends 'baseadmin.html' %}
+{% block title %} MyMeetings {% endblock %}
+
+{% block content %}
+
+<!--<div class='container'>-->
+<div class='row'>
+<div class='col-md-4 col-sm-4'>
+	<div class='row'>
+	{%for j in a%}
+	<table>
+	<tr>
+		<th>Mobile_number</th>
+	</tr>
+	<tr>
+		<th>{{j.Mobile_number}}</th>
+	</tr>
+	</table>
+	{% endfor %}
+	</div>
+</div>
+<div class='col-md-8 col-sm-8'>
+<div class='row'>
+	{% if not aob %}
+		<h1>we dont have any meetings today</h1>
+	{% else %}
+	
+		<table class="table">
+			<thead>
+			  <tr>
+				<th>user</th>
+				<th>meeting topic</th>
+				<th>time from</th>
+				<th>time to</th>
+				<th>Mobile_number</th>
+			  </tr>
+			</thead>
+			<tbody>
+			{% for i in aob %}
+			  <tr class="info">
+				<td>{{i.TO}}</td>
+				<td>{{i.Topic}}</td>
+				<td>{{i.Time_From}}</td>
+				<td>{{i.Time_To}}</td>
+			  </tr>
+			 {% endfor%}
+			 
+			  <!--<tr class="danger">
+				<td>Mary</td>
+				<td>Moe</td>
+				<td>mary@example.com</td>
+			  </tr>
+			  <tr class="info">
+				<td>July</td>
+				<td>Dooley</td>
+				<td>july@example.com</td>
+			  </tr>-->
+			</tbody>
+		  </table>
+	{% endif %}
+	</div>
+</div>	
+</div>
+<!--</div>-->
+{% endblock %}

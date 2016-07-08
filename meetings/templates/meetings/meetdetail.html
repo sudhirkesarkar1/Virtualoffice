@@ -1,0 +1,34 @@
+{% extends 'basemain.html' %}
+{% block title %} Mymail|Details {% endblock %}
+
+{% block content %}
+<div class="row">
+	{% include 'meetings/meetside.html'%}
+	<div class="col-md-9 col-sm-6" style='background-color:red;'>
+		<h2>
+		Topic : {{send.Topic}}
+		</h2>
+		<br>
+		Time From : {{send.Time_From}} 
+		<br>
+		Time TO : {{send.Time_To}}
+		<br>
+		Meeting_Date : {{send.Meeting_Date}}
+		<br>
+		<a href ="{%url 'meetings:Updatemeet' send.slug %}" class="btn btn-success btn-xs" role="button">Update Meeting  </a>
+		<a href ="{%url 'meetings:Deletemeet' send.slug %}" class="btn btn-success btn-xs" role="button">Delete Meeting  </a>
+	</div>
+</div>
+{% endblock %}
+
+<!--
+	TO = models.ForeignKey(User,on_delete=models.CASCADE)
+	Topic = models.CharField(max_length=50)
+	slug = models.SlugField(null=True, blank=True)
+	delete = models.BooleanField(default=False)
+	Time_From = models.IntegerField()
+	Time_To = model.IntegerField()
+	Meeting_Date = model.DateTimeField()
+	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+	updated = models.DateTimeField(auto_now_add=False, auto_now= True)
+-->

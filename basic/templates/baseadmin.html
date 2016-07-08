@@ -1,0 +1,50 @@
+{% load staticfiles%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>{% block title %}{{title}}{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+	{% include 'mycss.html'%}
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      {% include 'adminnav.html'%}
+    </nav>
+
+    <div class="container">
+		{% block content %}
+		{{ request.user }}
+		{{request.user.id }}
+			<div class="col-sm-4 col-xs-offset-3">
+				{% if not form %}
+					<h2>{{data}}</h2>
+				{% else%}
+					<form method ='POST'>{%csrf_token%}
+						{{form|crispy}}
+						<input class='btn btn-primary' type='submit' value='submit' />
+					</form>
+			</div>
+				{% endif %}
+
+	
+		{% endblock %}
+	</div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% include 'myjs.html' %}
+  </body>
+</html>

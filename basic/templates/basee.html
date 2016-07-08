@@ -1,0 +1,104 @@
+{% load staticfiles%}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>{% block title %}Virtual_Office{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+	{% include 'mycss.html'%}
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      {% include 'mynav.html'%}
+    </nav>
+
+    
+		{% block content %}
+		
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+		<div class="container">
+			<div class="row">
+				<div class='col-sm-6'>
+					<h1>Virtual Office</h1>
+					<p><strong>Made by</strong> entrepreneurs<br> for <strong>entrepreneurs</strong></p>
+					<p> We hold a deep-rooted understanding of how to help you protect your work and build effective business.</p>
+				</div>
+				<div class='col-sm-6' >
+					<form  method='POST' action='{% url "auth_login" %}'>{% csrf_token %}
+						<div class='form-group'>
+							<input type='text' class='form-control' name='username' placeholder='Username' /> 
+						</div>
+						<div class='form-group'>
+							<input type='password' class='form-control' name='password' placeholder='Password' />
+						</div>
+						<button type='submit' class='btn btn-default'>Login</button>
+						<a href="{% url 'registration_register'%}" class="btn btn-info" role="button">Register</a>
+					</form>
+					<!--</div>
+					<div class='col-sm-6 text-align-center'>
+					 <a href="{% url 'registration_register'%}" class="btn btn-info" role="button">Register</a>
+					<!--<p>
+					  <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
+					</p>-->
+				</div>
+			</div>
+		</div> 
+      </div>
+		
+
+    <!-- /container -->
+	 <section id="about">
+		<div class="jumbotron">
+			<div class = "container">
+				<div class="row">
+					<center><h2>About</h2></center>
+						<div style='background-color:black;height:400px;'>
+						</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<section id="contact">	
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<center><h2>Contact us</h2></center>
+					{%if form %}
+					<!--<h1>hiii</h1>-->
+					<form method ='POST' action ='' >{%csrf_token%}
+						{{form|crispy}}
+						<input class='btn btn-primary' type='submit' value='submit' />
+					</form>
+					{%else%}
+						<div style='background-color:red;height:400px;'>
+							{{query}}
+						</div>
+					{%endif%}
+				</div>
+			</div>
+		</div>
+	</section>
+		
+	
+		{% endblock %}
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% include 'myjs.html' %}
+  </body>
+</html>

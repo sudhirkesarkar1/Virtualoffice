@@ -1,0 +1,38 @@
+{% extends 'basemain.html' %}
+{% block title %} Mymail|Details {% endblock %}
+
+{% block content %}
+<div class="row">
+		{% include 'phymail/mailside.html'%}
+	
+	
+	
+	<div class="col-md-9 col-sm-6" style='background-color:red;'>
+		<h2>
+		TO   : {{send.TO_name}}
+		</h2>
+		<br>
+		Recievers address : {{send.TO_address_line_1}}
+		<br>
+		{{send.TO_address_line_2}}<br>{{send.Town_City}}<br>{{send.State}}<br>{{send.Postcode}}<br>
+		recieved Date : {{send.timestamp}}
+		<br>
+		<a href ="{{send.Your_Message.url}}" class="btn btn-success btn-xs" role="button">your massage  </a>
+	</div>
+</div>
+{% endblock %}
+<!--
+FROM = models.ForeignKey(User,on_delete=models.CASCADE)
+	TO_name = models.CharField(max_length=200)
+	TO_address_line_1 = models.CharField(max_length=200,null=True,blank=True)
+	TO_address_line_2 = models.CharField(max_length=200, null=True,blank=True)
+	Town_City = models.CharField(max_length=50,null=True,blank=True)
+	State = models.CharField(max_length=50,null=True,blank=True)
+	Postcode = models.IntegerField(default=0)
+	Your_Message = models.FileField()
+	subject = models.CharField(max_length=20,null=True,blank=True)
+	slug = models.SlugField(null=True, blank=True)
+	read = models.BooleanField(default=False)
+	timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
+	updated = models.DateTimeField(auto_now_add=False, auto_now= True)
+-->

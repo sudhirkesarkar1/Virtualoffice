@@ -1,0 +1,70 @@
+{% extends 'basemain.html' %}
+{% block title %} MyMeetings|old{% endblock %}
+
+{% block content %}
+
+<div class="row">
+{% include 'tasks/taskside.html'%}
+	<div class="col-md-9 col-sm-6" style='background-color:red;'>
+		{%if data%}
+			<h1>{{data}}</h1>
+		
+		{% else %}
+			{%if tas%}
+			<h1> {{tas}} </h1>
+			{% endif %}
+			{% if old_i %}
+				<h1>old Important Tasks </h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Task_Topic</th>
+							<th>End_Date</th>
+							<th>view</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for i in old_i %}
+							<tr class="success">
+								<td>{{i.Task_Topic}}</td>
+								<td>{{i.End_Date}}</td>
+								<td><a href='{%url "tasks:Selecttask" i.id %}' class="btn btn-success btn-xs" role="button">Show details</a></td>
+							</tr>
+						{% endfor%}
+					</tbody>
+				</table>
+			{% endif %}
+			{% if old_n %}	
+				<h1>Today's Normal Tasks </h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Task_Topic</th>
+							<th>End_Date</th>
+							<th>view</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for i in old_n %}
+							<tr class="success">
+								<td>{{i.Task_Topic}}</td>
+								<td>{{i.End_Date}}</td>
+								<td><a href='{%url "tasks:Selecttask" i.id %}' class="btn btn-success btn-xs" role="button">Show details</a></td>
+							</tr>
+						{% endfor%}
+					</tbody>
+				</table>
+			{% endif %}
+		
+
+		
+		{% endif %}
+	</div>
+
+
+</div>
+
+
+
+
+{% endblock %}

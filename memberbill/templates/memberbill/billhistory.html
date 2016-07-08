@@ -1,0 +1,41 @@
+{% extends 'basemain.html' %}
+{% block title %} MyAccount {% endblock %}
+
+{% block content %}
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3'>
+	{% if data %}
+		<h1>{{obj.userexpiry}} is your new expiry date</h1>
+		<h2>{{data}}</h2>
+	{% endif %}
+	
+		<table class="table">
+			<thead>
+			  <tr>
+				<th>Ammount paid</th>
+				<th>Date</th>
+			  </tr>
+			</thead>
+			<tbody>
+			{% for i in objectt %}
+			  <tr class="danger">
+				<td>{{i.bill_ammount}}</td>
+				<td>{{i.timestamp}}</td>
+			  </tr>
+			 {% endfor%}
+			  <!--<tr class="danger">
+				<td>Mary</td>
+				<td>Moe</td>
+				<td>mary@example.com</td>
+			  </tr>
+			  <tr class="info">
+				<td>July</td>
+				<td>Dooley</td>
+				<td>july@example.com</td>
+			  </tr>-->
+			</tbody>
+		  </table>
+	
+</div>
+</div>
+{% endblock %}

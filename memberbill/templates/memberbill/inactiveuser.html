@@ -1,0 +1,17 @@
+{% extends 'baseadmin.html' %}
+{% block title %} MyAccount {% endblock %}
+
+{% block content %}
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3'>
+	{%if mb %}
+		{%for i in mb%}
+		{{i.user}}<br>
+		{{i.userexpiry}}
+		{% endfor %}
+	{%else%}
+	<h1>No user is without payment or inactive</h1>
+	{%endif%}
+</div>
+</div>
+{% endblock %}

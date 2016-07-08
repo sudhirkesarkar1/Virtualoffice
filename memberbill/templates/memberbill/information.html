@@ -1,0 +1,16 @@
+{% extends 'basemain.html' %}
+{% block title %} MyAccount {% endblock %}
+
+{% block content %}
+<div class='row'>
+<div class='col-sm-6 col-sm-offset-3'>
+	{% if not data %}
+		<h1>{{object.userexpiry}} is your accounts expiry date</h1><br>
+		<a href='{%url "memberbill:billhistory" %}' class="btn btn-danger btn-sm" role="button">Payment history</a>
+	{% else %}
+		<h1>{{obj.userexpiry}} was your accounts expiry date, please pay the bill now</h1>
+		<a href='{%url "memberbill:billhistory" %}' class="btn btn-danger btn-sm" role="button">Pay</a>
+	{% endif %}
+</div>
+</div>
+{% endblock %}
